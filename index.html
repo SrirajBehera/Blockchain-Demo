@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Contract Tutorial</title>
-    <script type="text/javascript" src="/test/node_modules/web3/dist/web3.min.js"></script>
+    <script type="text/javascript" src="/test/node_modules/web3/dist/web3.min.js"></script> 
+	<!-- in general path/node_modules... etc -->
 </head>
 <body>
     <div>
@@ -19,7 +20,7 @@
         if (typeof web !== "undefined") {
             web3 = new Web3(web3.currentProvider);
         } else {
-            web3 = new Web3(new Web3.providers.HttpProvider("http://locahost:8545"));
+            web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
         }
         web3.eth.defaultAccount = web3.eth.accounts[0];
         var new_contract = new web3.eth.Contract([ // paste the ABI here
