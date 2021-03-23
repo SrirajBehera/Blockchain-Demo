@@ -1,0 +1,22 @@
+****** Ethereum and Smart Contract Deployment ******
+
+STEPS TO REPLICATE THE ENVIRONMENT INTO THE LOCAL SYSTEM AND USING BLOCK EXPLORER
+
+1. Clone ethereum repo from GitHub in home
+2. we need a test environment to run ethereum which can be done by ganache-cli (earlier it was testrpc but it is now deprecated)
+	sudo npm install -g ganache-cli
+3. To install some more local packages
+	sudo npm install -g ethereumjs-testrpc
+4. Run testrpc or ganache-cli (preffered) in the terminal
+5. then open new terminal and clone block explorer repo
+	https://github.com/etherparty/explorer
+6. Now cd to explorer and run sudo npm start to start the local server which will help us keep track of the blockchain
+7. This completes the local environment setup
+8. Now to make smart contracts, Solidity is used and its IDE is Remix which is browser based IDE.
+9. Compile the sol code using solidity compilers available in Remix IDE
+10. Then change the website protocol from https to http
+11. Then navigate to run and deploy tab and change the environment to Web3 Provider
+12. Click the deploy button to deploy the smart contract into the test blockchain and make some interations with functions in Remix IDE to simulate transactions
+13. We can check the blockchain in block-explorer and get information about each individual block.
+14. A custom frontend can also be made for the same and we need to install web3 to local machine using
+	sudo npm install --save ethereum/web3

@@ -1,0 +1,46 @@
+****** Go-Ethereum ******
+
+STEPS TO REPLICATE THE ENVIRONMENT INTO LOCAL SYSTEM AND START MINING (UBUNTU 20.04)
+
+1. Clone go-etherem repo from GitHub
+2. Install go-lang
+3. mkdir genesis in go-ethereum folder
+4. touch genesis3.json in genesis folder and put the following content for genesis block(starting block)
+{
+  "config": {
+        "chainId": 0,
+        "homesteadBlock": 0,
+        "eip155Block": 0,
+        "eip158Block": 0
+    },
+  "alloc"      : {},
+  "coinbase"   : "0x0000000000000000000000000000000000000000",
+  "difficulty" : "0x00",
+  "extraData"  : "",
+  "gasLimit"   : "0x2fefd8",
+  "nonce"      : "0x0000000000000042",
+  "mixhash"    : "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "parentHash" : "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "timestamp"  : "0x00"
+}
+
+5. then cd (to get back to home) and run the following command to initialize the genesis block
+	/home/path_to go-ethereum_folder/go-ethereum/build/bin/geth --datadir ~/ethereum/net3 init genesis/genesis3.json
+6. now to start the blockchain at a specific TCP port, run the following command
+	/home/path_to go-ethereum_folder/go-ethereum/build/bin/geth --datadir ~/ethereum/net3/ --networkid 3 console --port 30303
+	default TCP port is 30303
+7. When using first time, a new account has to be created by the following command
+	personal.newAccount()
+	It will ask for entering and conirming Passphrase and you need to keep it safe
+8. Once account is created, mining can begin.
+9. To start mining, miner.start() --> will take time to mine according to the difficulty set in the genesis file
+	You can also put parameter as a number as to start mining in specified thread
+10. To confirm if mining has started, eth.mining
+11. To check the hashrate, eth.hashrate
+12. To check the block, eth.blockNumber --> will tell at which block you are mining (for genesis block, it will show 0)
+13. To get information of specific block, eth.getBlock() --> put number as parameter to get the info for the block
+14. To stop mining, miner.stop()
+15. To get a list of accounts, eth.accounts
+16. To get a list of commands, type eth.
+17. To remove the ethash, rm -rf $HOME/.ethash
+18. To exit the geth console, type exit

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Contract Tutorial</title>
+    <script type="text/javascript" src="/test/node_modules/web3/dist/web3.min.js"></script>
+</head>
+<body>
+    <div>
+        <input id="input" type="text" name="name" placeholder="Enter name">
+        <button id="button">Set name</button>
+        <pre id="output"></pre>
+    </div>
+</body>
+    <script type="text/javascript">
+        var web3;
+        if (typeof web !== "undefined") {
+            web3 = new Web3(web3.currentProvider);
+        } else {
+            web3 = new Web3(new Web3.providers.HttpProvider("http://locahost:8545"));
+        }
+        web3.eth.defaultAccount = web3.eth.accounts[0];
+        var new_contract = new web3.eth.Contract([ // paste the ABI here
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_name",
+				"type": "string"
+			}
+		],
+		"name": "setName",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getName",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "name",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+], "0xB6b1558EDdc4c87e1EA59eFbc78845B7146726c5") // add the address here instead
+
+    // var contract = new_contract.at("0xB6b1558EDdc4c87e1EA59eFbc78845B7146726c5"); // address
+
+    var input = document.getElementById("input");
+    var output = document.getElementById("output");
+    var pre = document.getElementById("button");
+	
+    button.addEventListener("click", () => {
+		Contract.setName(input.value);
+		output.innerHTML = contract.getName();
+    }
+    );
+    </script>
+</html>
